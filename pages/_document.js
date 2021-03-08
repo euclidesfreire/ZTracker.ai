@@ -1,13 +1,14 @@
 import React from "react";
-import Document, { Head, Main, NextScript } from "next/document";
+import Document, { Html, Head, Main, NextScript } from "next/document";
+import theme from '../src/theme';
 
 class MyDocument extends Document {
   render() {
     return (
-      <html lang="en">
+      <Html lang="pt-br">
         <Head>
           <meta charSet="utf-8" />
-          <meta name="theme-color" content="#000000" />
+          <meta name="theme-color" content={theme.palette.primary.main} />
           <link
             rel="shortcut icon"
             href={require("assets/img/brand/favicon.ico")}
@@ -28,7 +29,7 @@ class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }
