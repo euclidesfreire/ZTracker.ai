@@ -93,7 +93,7 @@ const Dashboard = (props) => {
               </CardHeader>
               <CardBody>
                 {/* video */}
-                <div className="col">
+                <div>
                   <video autoPlay loop muted id='video' width="100%" height="100%">
                     <source src={require("assets/video/resultado.mp4")}  type='video/mp4' />
                   </video>
