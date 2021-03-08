@@ -1,0 +1,25 @@
+{
+  "name": "ZTracker.ai",
+  "version": "1.0.0",
+  "description": "ZTracker.ai =======================",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/euclidesfreire/ZTracker.ai.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/euclidesfreire/ZTracker.ai/issues"
+  },
+  "homepage": "https://github.com/euclidesfreire/ZTracker.ai#readme",
+  "dependencies": {
+    "next": "^10.0.8",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}
