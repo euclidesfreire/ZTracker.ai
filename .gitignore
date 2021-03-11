@@ -3,3 +3,10 @@
 package-lock.json
 /build
 /.next
+
+#Google Drive API
+credentials.json
+token.json
+
+
+.env
