@@ -10,7 +10,7 @@ module.exports = withFonts(
   withCSS(
     withImages(
       withSass({
-        webpack(config, options) {
+        webpack(config, options,  { isServer }) {
           config.module.rules.push({
             test: /\.(eot|ttf|woff|woff2|mp4)$/,
             use: {
