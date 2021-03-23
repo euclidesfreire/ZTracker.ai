@@ -10,17 +10,15 @@ module.exports = withFonts(
   withCSS(
     withImages(
       withSass({
-        webpack(config, options,  { isServer }) {
+        webpack(config, options) {
           config.module.rules.push({
             test: /\.(eot|ttf|woff|woff2|mp4)$/,
             use: {
               loader: "url-loader",
             },
           });
-          if (!isServer) {
-            config.node = {
-              fs: 'empty'
-            }
+          config.node = {
+            fs: 'empty'
           };
           config.resolve.modules.push(path.resolve("./"));
           return config;
