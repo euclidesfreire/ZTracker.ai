@@ -4,7 +4,9 @@
   "description": "ZTracker.ai =======================",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
     "heroku-postbuild": "npm run build"
   },
   "repository": {
