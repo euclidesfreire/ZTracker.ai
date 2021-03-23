@@ -18,7 +18,8 @@ module.exports = withFonts(
             },
           });
           config.node = {
-            fs: 'empty'
+            fs: 'empty',
+            child_process: 'empty'
           };
           config.resolve.modules.push(path.resolve("./"));
           return config;
