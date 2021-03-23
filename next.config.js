@@ -17,6 +17,11 @@ module.exports = withFonts(
               loader: "url-loader",
             },
           });
+          if (!isServer) {
+            config.node = {
+              fs: 'empty'
+            }
+          };
           config.resolve.modules.push(path.resolve("./"));
           return config;
         },
