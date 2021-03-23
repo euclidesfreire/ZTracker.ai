@@ -17,9 +17,6 @@ module.exports = withFonts(
               loader: "url-loader",
             },
           });
-          config.node = {
-            fs: 'empty'
-          };
           config.resolve.modules.push(path.resolve("./"));
           return config;
         },

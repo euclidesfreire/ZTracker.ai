@@ -1,12 +1,14 @@
+import {gdrive} from 'pinkybrain';
+
 async function resultados(request, response){
 
-    response.json({
-        title: 'Express', 
-        audio: '', 
-        video: '', 
-        image: '', 
-        auth: false
-    })
+    if(request.query.code){
+        const oAuth2Client = await gdrive.getAccessToken(request, response);
+        
+        response.redirect('/files');
+    }
+
+    return;
 }
 
 export default resultados;
