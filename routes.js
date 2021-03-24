@@ -11,7 +11,7 @@ var routes = [
   },
   {
     path: "/linkapi",
-    name: "Link API",
+    name: "Link Server API",
     icon: "ni ni-curved-next text-primary",
   },
 ];

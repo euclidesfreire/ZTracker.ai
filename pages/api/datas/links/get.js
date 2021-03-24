@@ -1,6 +1,6 @@
 import fs from "fs";
 
-const LINK_API_PATH = "link-api.json";
+const LINK_API_PATH = "linkapi.json";
 
 function getLink(){
     const link = JSON.parse(fs.readFileSync(LINK_API_PATH));
@@ -8,7 +8,7 @@ function getLink(){
     return link;
 }
 
-async function get(request, response){
+function get(request, response){
     const link = getLink();
 
     response.json({

@@ -8,5 +8,8 @@ package-lock.json
 credentials.json
 token.json
 
+#Link Server API
+linkapi.json
+
 
 .env
