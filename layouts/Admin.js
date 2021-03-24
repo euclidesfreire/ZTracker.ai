@@ -24,7 +24,7 @@ function Admin(props) {
         return routes[i].name;
       }
     }
-    return "Dashboard";
+    return "Brand";
   };
   return (
     <>
@@ -32,7 +32,7 @@ function Admin(props) {
         {...props}
         routes={routes}
         logo={{
-          innerLink: "/admin/index",
+          innerLink: "/index",
           imgSrc: require("assets/img/brand/logo.png"),
           imgAlt: "...",
         }}

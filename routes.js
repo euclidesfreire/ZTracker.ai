@@ -6,8 +6,13 @@ var routes = [
   },
   {
     path: "/files",
-    name: "Files",
-    icon: "ni ni-tv-2 text-primary",
+    name: "Upload",
+    icon: "ni ni-cloud-upload-96 text-primary",
+  },
+  {
+    path: "/linkapi",
+    name: "Link API",
+    icon: "ni ni-curved-next text-primary",
   },
 ];
 export default routes;

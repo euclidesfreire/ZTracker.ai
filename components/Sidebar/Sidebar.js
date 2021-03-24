@@ -59,10 +59,10 @@ function Sidebar(props) {
     return routes.map((prop, key) => {
       return (
         <NavItem key={key} active={activeRoute(prop.layout + prop.path)}>
-          <Link href={prop.layout + prop.path}>
+          <Link href={prop.path}>
             <NavLink
-              href="#"
-              active={activeRoute(prop.layout + prop.path)}
+              href={prop.path}
+              active={activeRoute(prop.path)}
               onClick={closeCollapse}
             >
               <i className={prop.icon} />

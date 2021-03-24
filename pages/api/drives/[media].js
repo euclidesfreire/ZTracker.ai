@@ -25,13 +25,10 @@ async function upload(request, response){
             );
 
         const mediaUrl = `https://drive.google.com/uc?export=view&id=${fileId}`
-
-        response.json({
-            fileId: fileId,
-            mediaUrl: mediaUrl
-        });
     
     });
+
+    response.redirect('/');
   }
   
   export default upload;

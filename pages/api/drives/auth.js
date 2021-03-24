@@ -11,8 +11,8 @@ async function auth(request, response){
     const credentials = process.env.CREDENTIALS;
 
     const oauthClient = await gdrive.getAuthorization(credentials, response);
-  
-    response.send(JSON.stringify(oauthClient));    
-  }
+
+    return oauthClient;
+}
   
 export default auth;
