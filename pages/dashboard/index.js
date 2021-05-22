@@ -39,6 +39,21 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 
+export async function getServerSideProps(){
+  const proxyUrl = 'http://localhost:3000/api/pages/dashboard/lists';
+  const files = await fetch(proxyUrl);
+  const filesJson = await files.json(); 
+  
+  const urlOutput = 'https://drive.google.com/file/d/' + filesJson['output.mp4'] + '/preview';
+
+  return {
+    props: {
+      urlOutput: urlOutput
+    }
+  }
+
+}
+
 const useStyles = makeStyles({
   root: {
     width: 300,
@@ -94,9 +109,8 @@ const Dashboard = (props) => {
               <CardBody>
                 {/* video */}
                 <div>
-                  <video autoPlay loop muted id='video' width="100%" height="100%">
-                    <source src={require("assets/video/resultado.mp4")}  type='video/mp4' />
-                  </video>
+                   <iframe width="100%" height="350px" src={props.urlOutput}>
+                   </iframe>
                 </div>
               </CardBody>
             </Card>
@@ -162,6 +176,9 @@ const Dashboard = (props) => {
                       min={10}
                       max={110}
                   />
+                  </div>
+                  <div>
+                   
                   </div>
                 </div>
               </CardBody>

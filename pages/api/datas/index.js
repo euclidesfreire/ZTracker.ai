@@ -1,6 +1,5 @@
 async function datas(request, response){
-
-    response.redirect('/dashboard');
+    response.redirect('/');
 }
 
 export default datas;

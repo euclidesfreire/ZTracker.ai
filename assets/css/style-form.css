@@ -1,0 +1,19 @@
+input[type=submit] {
+    background-color: #5e72e4;
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+.select-folder {
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}

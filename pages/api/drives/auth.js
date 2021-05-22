@@ -12,7 +12,9 @@ async function auth(request, response){
 
     const oauthClient = await gdrive.getAuthorization(credentials, response);
 
-    response.redirect('/files');
+    response.json({
+      oauthClient: oauthClient
+    });
 }
   
 export default auth;
