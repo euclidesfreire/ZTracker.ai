@@ -7,28 +7,35 @@ export const config = {
     },
 }
 
-async function upload(request, response){
-    const media = request.query.media;
-    const credentials = process.env.CREDENTIALS;
-    const form = new formidable.IncomingForm();
+async function uploads(request, response){
 
-    form.parse(request, async (err, fields, files) => {
-        if (err) return console.log(err);
+    try {
+        const media = request.query.media;
+        const credentials = process.env.CREDENTIALS;
+        const form = new formidable.IncomingForm();
+
+        form.parse(request, async (err, fields, files) => {
+            if (err) return console.log(err);
     
-        const fileId = await gdrive.fileUpload(
-            credentials, 
-            response,
-            files[media].name, 
-            files[media].path, 
-            files[media].type, 
-            fields.folder
+            const fileId = await gdrive.fileUpload(
+                credentials, 
+                response,
+                files[media].name, 
+                files[media].path, 
+                files[media].type, 
+                fields.folder
             );
 
-        const mediaUrl = `https://drive.google.com/uc?export=view&id=${fileId}`
+            const mediaUrl = `https://drive.google.com/uc?export=view&id=${fileId}`
     
-    });
+        });
 
-    response.redirect('/');
+        return response.redirect('/');
+
+    } catch (err) {
+        return console.log('The API Drive Uploads: ' + err);
+    }
+
   }
   
-  export default upload;
+  export default uploads;

@@ -29,12 +29,6 @@ Router.events.on("routeChangeError", () => {
   document.body.classList.remove("body-page-transition");
 });
 
-if (process.env.NODE_ENV === 'production') {
-  process.on('uncaughtException', (error) => {
-    console.error(error.stack)
-    // Don't run process.exit(1)
-  })
-}
 
 export default class MyApp extends App {
   componentDidMount() {

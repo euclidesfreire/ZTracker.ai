@@ -43,6 +43,8 @@ export async function getServerSideProps(){
   const proxyUrl = 'http://localhost:3000/api/pages/dashboard/lists';
   const files = await fetch(proxyUrl);
   const filesJson = await files.json(); 
+
+  console.log(filesJson);
   
   const urlOutput = 'https://drive.google.com/file/d/' + filesJson['output.mp4'] + '/preview';
 

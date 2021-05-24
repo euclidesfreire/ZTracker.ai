@@ -8,13 +8,18 @@ export const config = {
 
 async function auth(request, response){
 
-    const credentials = process.env.CREDENTIALS;
+  try {    
+      const credentials = process.env.CREDENTIALS;
 
-    const oauthClient = await gdrive.getAuthorization(credentials, response);
+      const oauthClient = await gdrive.getAuthorization(credentials, response);
 
-    response.json({
-      oauthClient: oauthClient
-    });
+      return response.json({
+        oauthClient: oauthClient
+      });
+  } catch (err) {
+      return console.log('The API Auth: ' + err);
+  }
+
 }
   
 export default auth;

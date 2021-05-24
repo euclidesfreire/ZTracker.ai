@@ -6,16 +6,24 @@ export const config = {
     },
 }
 
-async function list(request, response){
-    const credentials = process.env.CREDENTIALS;
+async function lists(request, response){
 
-    const folderId = request.query.folderid;
+  try {
+      const credentials = process.env.CREDENTIALS;
 
-    const query =  "'" + folderId + "' in parents";
+      const folderId = request.query.folderid;
 
-    const listFile = await gdrive.listFiles(credentials, response, query);
+      const query =  "'" + folderId + "' in parents";
 
-    response.json(listFile.files);
+      const listFile = await gdrive.listFiles(credentials, response, query);
+
+      console.log(listFile.files);
+
+      return response.json(listFile.files);
+
+    } catch (err) {
+        return console.log('The API Drive Lists: ' + err);
+    }
   }
   
-  export default list;
+  export default lists;

@@ -6,10 +6,10 @@ async function drives(request, response){
         
         const credentials = process.env.CREDENTIALS;
 
-        const oAuth2Client = gdrive.getAccessToken(credentials, request, response);
+        const oAuth2Client = await gdrive.getAccessToken(credentials, request, response);
     }
 
-    response.redirect('/files');
+    return response.redirect('/files');
 }
 
 export default drives;

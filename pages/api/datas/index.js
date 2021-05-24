@@ -1,5 +1,5 @@
 async function datas(request, response){
-    response.redirect('/');
+    return response.redirect('/');
 }
 
 export default datas;

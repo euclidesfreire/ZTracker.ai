@@ -11,7 +11,7 @@ function add(request, response){
 
     setLink(request.body.linkapi);
 
-    response.redirect('/');
+    return response.redirect('/');
 }
 
 export default add;
