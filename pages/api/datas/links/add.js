@@ -1,17 +1,25 @@
-import fs from "fs";
-
-const LINK_API_PATH = "linkapi.json";
+import cookie from "js-cookie";
 
 function setLink(link_api) {
-    const link = {'link': link_api};
-    fs.writeFileSync(LINK_API_PATH, JSON.stringify(link));
+    try {
+
+        return cookie.set('link', link_api);
+
+    } catch (err) {
+        return console.log('Erro Set Link Function Server: ' + err);
+    }
 }
 
 function add(request, response){
+    try {
+        
+        console.log(setLink(request.body.linkapi));
 
-    setLink(request.body.linkapi);
+        return response.redirect('/api/datas/links/get');
 
-    return response.redirect('/');
+    } catch (err) {
+        return console.log('Erro Add Link API Server: ' + err);
+    }
 }
 
 export default add;
