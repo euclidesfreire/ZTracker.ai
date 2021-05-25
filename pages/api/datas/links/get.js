@@ -1,27 +1,14 @@
-import cookie from "js-cookie";
-
-const LINK_API_PATH = "linkapi.json";
-
-function getLink(){
-    try {
-
-        const linkapi = cookie.get('link');
-
-        console.log(linkapi);
-
-        return linkapi;
-
-    } catch (err) {
-        return console.log('Erro Get Link Function Server: ' + err);
-    }
-}
+import Cookies from 'cookies';
 
 function get(request, response){
     try {
-        const linkapi = getLink();
+
+        var cookies = new Cookies(request, response);
+
+        const linkApi =  cookies.get('link');
 
         return response.json({
-            linkapi,
+            linkApi,
         });
 
     } catch (err) {

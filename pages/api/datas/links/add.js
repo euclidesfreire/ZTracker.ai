@@ -1,19 +1,11 @@
-import cookie from "js-cookie";
-
-function setLink(link_api) {
-    try {
-
-        return cookie.set('link', link_api);
-
-    } catch (err) {
-        return console.log('Erro Set Link Function Server: ' + err);
-    }
-}
+import Cookies from 'cookies';
 
 function add(request, response){
     try {
-        
-        console.log(setLink(request.body.linkapi));
+
+        var cookies = new Cookies(request, response);
+
+        cookies.set('link', request.body.linkapi);
 
         return response.redirect('/api/datas/links/get');
 
