@@ -1,4 +1,4 @@
-import {gdrive} from 'pinkybrain';
+import {gdriveCookie} from 'pinkybrain';
 
 export const config = {
     api: {
@@ -11,7 +11,7 @@ async function auth(request, response){
   try {    
       const credentials = process.env.CREDENTIALS;
 
-      const oauthClient = await gdrive.getAuthorization(credentials, response);
+      const oauthClient = await gdriveCookie.getAuthorization(request, response, credentials);
 
       return response.json({
         oauthClient: oauthClient

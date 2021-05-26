@@ -1,4 +1,4 @@
-import {gdrive} from 'pinkybrain';
+import {gdriveCookie} from 'pinkybrain';
 
 async function drives(request, response){
 
@@ -6,7 +6,7 @@ async function drives(request, response){
         
         const credentials = process.env.CREDENTIALS;
 
-        const oAuth2Client = await gdrive.getAccessToken(credentials, request, response);
+        const oAuth2Client = await gdriveCookie.getAccessToken(request, response, credentials);
     }
 
     return response.redirect('/files');

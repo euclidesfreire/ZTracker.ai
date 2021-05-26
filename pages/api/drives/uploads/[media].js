@@ -1,4 +1,4 @@
-import {gdrive} from 'pinkybrain';
+import {gdriveCookie} from 'pinkybrain';
 import formidable from "formidable";
 
 export const config = {
@@ -17,9 +17,10 @@ async function uploads(request, response){
         form.parse(request, async (err, fields, files) => {
             if (err) return console.log(err);
     
-            const fileId = await gdrive.fileUpload(
-                credentials, 
+            const fileId = await gdriveCookie.fileUpload(
+                request,
                 response,
+                credentials, 
                 files[media].name, 
                 files[media].path, 
                 files[media].type, 

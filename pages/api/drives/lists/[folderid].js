@@ -1,4 +1,4 @@
-import {gdrive} from 'pinkybrain';
+import {gdriveCookie} from 'pinkybrain';
 
 export const config = {
     api: {
@@ -15,7 +15,7 @@ async function lists(request, response){
 
       const query =  "'" + folderId + "' in parents";
 
-      const listFile = await gdrive.listFiles(credentials, response, query);
+      const listFile = await gdriveCookie.listFiles(request, response, credentials, query);
 
       console.log(listFile.files);
 
