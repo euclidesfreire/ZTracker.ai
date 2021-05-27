@@ -1,4 +1,5 @@
 import {gdriveCookie} from 'pinkybrain';
+import Cookies from 'cookies';
 
 export const config = {
     api: {
@@ -6,9 +7,22 @@ export const config = {
     },
 }
 
+function formatListFiles(listFiles){
+    const listFilesNew = {};
+
+    for(var x in listFiles){
+      listFilesNew[listFiles[x]['name']] = listFiles[x]['id'];
+    }
+
+    return listFilesNew;
+}
+
 async function lists(request, response){
 
   try {
+
+      const cookie = new Cookies(request, response);
+
       const credentials = process.env.CREDENTIALS;
 
       const folderId = request.query.folderid;
@@ -17,9 +31,7 @@ async function lists(request, response){
 
       const listFile = await gdriveCookie.listFiles(request, response, credentials, query);
 
-      console.log(listFile.files);
-
-      return response.json(listFile.files);
+      return response.json(formatListFiles(listFile.files));
 
     } catch (err) {
         return console.log('The API Drive Lists: ' + err);

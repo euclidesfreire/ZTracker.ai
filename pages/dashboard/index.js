@@ -39,12 +39,19 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 
-export async function getServerSideProps(){
-  const proxyUrl = 'http://localhost:3000/api/pages/dashboard/lists';
-  const files = await fetch(proxyUrl);
-  const filesJson = await files.json(); 
+export async function getServerSideProps(ctx){
 
-  console.log(filesJson);
+  const folderId = '1kQ0iL9QlV0GVEhNieX6aadxd8TNByoky';
+  const url = 'http://localhost:3000/api/drives/lists/' + folderId;
+
+  const options = {
+    headers: {
+      cookie: ctx.req ? ctx.req.headers.cookie : null
+    }
+  }
+
+  const files = await fetch(url, options);
+  const filesJson = await files.json(); 
   
   const urlOutput = 'https://drive.google.com/file/d/' + filesJson['output.mp4'] + '/preview';
 
