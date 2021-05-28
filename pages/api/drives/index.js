@@ -7,9 +7,11 @@ async function drives(request, response){
         const credentials = process.env.CREDENTIALS;
 
         const oAuth2Client = await gdriveCookie.getAccessToken(request, response, credentials);
+
+        return response.redirect('/');
     }
 
-    return response.redirect('/');
+    return response.redirect('/auth');
 }
 
 export default drives;

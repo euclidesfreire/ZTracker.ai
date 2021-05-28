@@ -40,43 +40,47 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 
 export async function getServerSideProps(ctx){  
-  //JSON DATA => API pages dashboard
-  const dominio = process.env.DOMINIO;
-  const proxyUrl = dominio + 'api/pages/dashboard';
+  try {
+    //JSON DATA => API pages dashboard
+    const dominio = process.env.DOMINIO;
+    const proxyUrl = dominio + 'api/pages/dashboard';
 
-  const options = {
-    headers: {
-      cookie: ctx.req ? ctx.req.headers.cookie : null
-    }
-  };
-
-  const data = await fetch(proxyUrl, options);
-  const dataJson = await data.json(); 
-
-  if(!dataJson['checkCookie']['TOKEN_GDRIVE']['cookieBool']){
-    return {
-      redirect: {
-        destination: dataJson['checkCookie']['TOKEN_GDRIVE']['url'],
-        permanent: false,
-      },
+    const options = {
+      headers: {
+        cookie: ctx.req ? ctx.req.headers.cookie : null
+      }
     };
-  }
+
+    const data = await fetch(proxyUrl, options);
+    const dataJson = await data.json(); 
+
+    if(!dataJson['checkCookie']['TOKEN_GDRIVE']['cookieBool']){
+        return {
+          redirect: {
+          destination: dataJson['checkCookie']['TOKEN_GDRIVE']['url'],
+          permanent: false,
+        },
+      };
+    }
   
-  if(!dataJson['checkCookie']['LINK_SERVER']['cookieBool']){
-    return {
-      redirect: {
-        destination: dataJson['checkCookie']['LINK_SERVER']['url'],
-        permanent: false,
-      },
-    };
-  }
-
-  const urlOutput = 'https://drive.google.com/file/d/' + dataJson['files']['output.mp4'] + '/preview';
-
-  return {
-    props: {
-      urlOutput: urlOutput
+    if(!dataJson['checkCookie']['LINK_SERVER']['cookieBool']){
+      return {
+        redirect: {
+          destination: dataJson['checkCookie']['LINK_SERVER']['url'],
+          permanent: false,
+        },
+      };
     }
+
+    const urlOutput = 'https://drive.google.com/file/d/' + dataJson['files']['output.mp4'] + '/preview';
+
+    return {
+      props: {
+        urlOutput: urlOutput
+      }
+    }
+  } catch (err) {
+    return console.log('The Page Dashboad Err: ' + err);
   }
 
 }
