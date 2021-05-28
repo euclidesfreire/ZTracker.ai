@@ -9,7 +9,7 @@ async function drives(request, response){
         const oAuth2Client = await gdriveCookie.getAccessToken(request, response, credentials);
     }
 
-    return response.redirect('/files');
+    return response.redirect('/');
 }
 
 export default drives;

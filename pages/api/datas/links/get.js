@@ -5,7 +5,7 @@ function get(request, response){
 
         var cookies = new Cookies(request, response);
 
-        const linkApi =  cookies.get('link');
+        const linkApi =  cookies.get('LINK_SERVER');
 
         return response.json({
             linkApi,

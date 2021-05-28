@@ -13,9 +13,8 @@ async function auth(request, response){
 
       const oauthClient = await gdriveCookie.getAuthorization(request, response, credentials);
 
-      return response.json({
-        oauthClient: oauthClient
-      });
+      return response.redirect('/');
+
   } catch (err) {
       return console.log('The API Auth: ' + err);
   }

@@ -5,9 +5,9 @@ function add(request, response){
 
         var cookies = new Cookies(request, response);
 
-        cookies.set('link', request.body.linkapi);
+        cookies.set('LINK_SERVER', request.body.linkapi);
 
-        return response.redirect('/api/datas/links/get');
+        return response.redirect('/');
 
     } catch (err) {
         return console.log('Erro Add Link API Server: ' + err);

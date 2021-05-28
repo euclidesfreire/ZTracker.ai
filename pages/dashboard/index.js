@@ -39,21 +39,38 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 
-export async function getServerSideProps(ctx){
-
-  const folderId = '1kQ0iL9QlV0GVEhNieX6aadxd8TNByoky';
-  const url = 'http://localhost:3000/api/drives/lists/' + folderId;
+export async function getServerSideProps(ctx){  
+  //JSON DATA => API pages dashboard
+  const proxyUrl = 'http://localhost:3000/api/pages/dashboard';
 
   const options = {
     headers: {
       cookie: ctx.req ? ctx.req.headers.cookie : null
     }
+  };
+
+  const data = await fetch(proxyUrl, options);
+  const dataJson = await data.json(); 
+
+  if(!dataJson['checkCookie']['TOKEN_GDRIVE']['cookieBool']){
+    return {
+      redirect: {
+        destination: dataJson['checkCookie']['TOKEN_GDRIVE']['url'],
+        permanent: false,
+      },
+    };
+  }
+  
+  if(!dataJson['checkCookie']['LINK_SERVER']['cookieBool']){
+    return {
+      redirect: {
+        destination: dataJson['checkCookie']['LINK_SERVER']['url'],
+        permanent: false,
+      },
+    };
   }
 
-  const files = await fetch(url, options);
-  const filesJson = await files.json(); 
-  
-  const urlOutput = 'https://drive.google.com/file/d/' + filesJson['output.mp4'] + '/preview';
+  const urlOutput = 'https://drive.google.com/file/d/' + dataJson['files']['output.mp4'] + '/preview';
 
   return {
     props: {

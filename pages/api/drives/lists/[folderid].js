@@ -1,5 +1,4 @@
 import {gdriveCookie} from 'pinkybrain';
-import Cookies from 'cookies';
 
 export const config = {
     api: {
@@ -21,7 +20,7 @@ async function lists(request, response){
 
   try {
 
-      const cookie = new Cookies(request, response);
+      console.log("Cookie List: " + request.cookies['TOKEN_GDRIVE']);
 
       const credentials = process.env.CREDENTIALS;
 
