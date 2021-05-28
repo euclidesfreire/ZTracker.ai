@@ -41,7 +41,8 @@ import Switch from '@material-ui/core/Switch';
 
 export async function getServerSideProps(ctx){  
   //JSON DATA => API pages dashboard
-  const proxyUrl = 'http://localhost:3000/api/pages/dashboard';
+  const dominio = process.env.DOMINIO;
+  const proxyUrl = dominio + 'api/pages/dashboard';
 
   const options = {
     headers: {

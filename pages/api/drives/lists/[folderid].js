@@ -20,8 +20,6 @@ async function lists(request, response){
 
   try {
 
-      console.log("Cookie List: " + request.cookies['TOKEN_GDRIVE']);
-
       const credentials = process.env.CREDENTIALS;
 
       const folderId = request.query.folderid;

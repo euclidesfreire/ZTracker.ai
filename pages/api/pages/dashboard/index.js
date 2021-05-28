@@ -28,8 +28,9 @@ function checkCookies(request, response){
 async function listFilesDrive(request, response){
 
     try {
+        const dominio = process.env.DOMINIO;
         const folderId = '1kQ0iL9QlV0GVEhNieX6aadxd8TNByoky';
-        const url = 'http://localhost:3000/api/drives/lists/' + folderId;
+        const url = dominio + 'api/drives/lists/' + folderId;
 
         const options = {
             headers: {
