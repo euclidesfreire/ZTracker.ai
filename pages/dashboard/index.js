@@ -40,32 +40,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 
 export async function getServerSideProps(ctx){
-
-  try {
-    //JSON DATA => API pages dashboard
-    const dominio = process.env.DOMINIO;
-    const proxyUrl = dominio + 'api/pages/dashboard';
-
-    const options = {
-      headers: {
-        cookie: ctx.req ? ctx.req.headers.cookie : null
-      }
-    };
-
-    const data = await fetch(proxyUrl, options);
-    const dataJson = await data.json(); 
-  
-    if(!dataJson['checkCookie']['LINK_SERVER']['cookieBool']){
-      return {
-        redirect: {
-          destination: dataJson['checkCookie']['LINK_SERVER']['url'],
-          permanent: false,
-        },
-      };
-    }
-  } catch (err) {
-    return console.log('The Page Dashboad Err: ' + err);
-  } 
   
   const fileId = '1-CX04UX8UQuExfxX7WZ7YJQcLsJLbQi-';
 
