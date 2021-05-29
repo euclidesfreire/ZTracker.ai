@@ -43,8 +43,7 @@ export async function getServerSideProps(ctx){
 
   try {
     //JSON DATA => API pages dashboard
-    const dominio = process.env.DOMINIO;
-    const proxyUrl = dominio + 'api/pages/dashboard';
+    const proxyUrl = 'https://ztracker-ai.vercel.app/api/pages/dashboard';
 
     const options = {
       headers: {
