@@ -74,7 +74,7 @@ export async function getServerSideProps(ctx){
       }
   }
   } catch (err) {
-    console.log('The Page Dashboad Err: ' + err);
+    console.log('The Page Dashboad Err: ' + err + " DOMINIO: " + process.env.DOMINIO);
 
     return { props: {} };
   }
