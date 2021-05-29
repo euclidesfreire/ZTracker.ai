@@ -3,15 +3,11 @@ import Cookies from 'cookies';
 function checkCookies(request, response){
     try{
         const cookie = new Cookies(request, response);
-        console.log('cookie.get(TOKEN_GDRIVE):' + cookie.get('TOKEN_GDRIVE'));
-        const AuthBool = cookie.get('TOKEN_GDRIVE') ? true : false;
+        
+        //const AuthBool = cookie.get('TOKEN_GDRIVE') ? true : false;
         const LinkServerBool = cookie.get('LINK_SERVER') ? true : false;
 
         const checkCookieJson = {
-            "TOKEN_GDRIVE": { 
-                "cookieBool": AuthBool,
-                "url": "/auth"
-            },
             "LINK_SERVER": { 
                 "cookieBool": LinkServerBool,
                 "url": "/linkapi"
@@ -21,7 +17,9 @@ function checkCookies(request, response){
         return JSON.stringify(checkCookieJson);
 
     } catch (err) {
-        return console.log('The API Pages App (Function checkCookies): ' + err);
+        console.log('The API Pages App (Function checkCookies): ' + err);
+
+        return false;
     }
 }
 
@@ -53,15 +51,18 @@ async function dashboard(request, response){
     try {
 
         const checkCookieJson = checkCookies(request, response);
-        const filesJson = await listFilesDrive(request, response);        
+        //const filesJson = await listFilesDrive(request, response);        
 
         return response.json({
-            files: filesJson,
             checkCookie: JSON.parse(checkCookieJson)
         });
     
     } catch (err) {
-        return console.log('The API Pages Dashboard Lists: ' + err);
+        console.log('The API Pages Dashboard Lists: ' + err);
+
+        return response.json({
+            checkCookie: false
+        });
     }
 }
 
