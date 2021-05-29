@@ -39,7 +39,8 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 
-export async function getServerSideProps(ctx){  
+export async function getServerSideProps(ctx){
+
   try {
     //JSON DATA => API pages dashboard
     const dominio = process.env.DOMINIO;
@@ -53,15 +54,6 @@ export async function getServerSideProps(ctx){
 
     const data = await fetch(proxyUrl, options);
     const dataJson = await data.json(); 
-
-    if(!dataJson['checkCookie']['TOKEN_GDRIVE']['cookieBool']){
-        return {
-          redirect: {
-          destination: dataJson['checkCookie']['TOKEN_GDRIVE']['url'],
-          permanent: false,
-        },
-      };
-    }
   
     if(!dataJson['checkCookie']['LINK_SERVER']['cookieBool']){
       return {
@@ -71,16 +63,18 @@ export async function getServerSideProps(ctx){
         },
       };
     }
-
-    const urlOutput = 'https://drive.google.com/file/d/' + dataJson['files']['output.mp4'] + '/preview';
-
-    return {
-      props: {
-        urlOutput: urlOutput
-      }
-    }
   } catch (err) {
     return console.log('The Page Dashboad Err: ' + err);
+  } 
+  
+  const fileId = '1-CX04UX8UQuExfxX7WZ7YJQcLsJLbQi-';
+
+  const urlOutput = 'https://drive.google.com/file/d/' + fileId + '/preview';
+
+  return {
+    props: {
+      urlOutput: urlOutput
+      }
   }
 
 }
