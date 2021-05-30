@@ -9,6 +9,34 @@ input[type=submit] {
     border-radius: 12px;
 }
 
+input[type=text] {
+    height: 30px;
+    font-size: 18px;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.671);
+    padding: 10px 24px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+select  {
+    background-color: transparent;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.596);
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.671);
+    padding: 10px 24px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    outline: none;
+}
+
+select::-ms-expand {
+    display: none;
+ }
+
 .select-folder {
     width: 0.1px;
 	height: 0.1px;

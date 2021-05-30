@@ -65,6 +65,17 @@ html {
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block; }
 
+.header-img {
+  background-image: url("../img/theme/fish-ia.jpg");
+    background-size: cover;
+    position: fixed;
+    z-index: 9998;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
 body {
   margin: 0;
   font-family: Open Sans, sans-serif;
@@ -10625,7 +10636,7 @@ button.bg-lighter:focus {
   background-color: #cbd3da !important; }
 
 .bg-gradient-primary {
-  background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important; }
+  background: linear-gradient(87deg, #5e72e4 0, #000000 100%) !important; }
 
 .bg-gradient-secondary {
   background: linear-gradient(87deg, #f7fafc 0, #f7f8fc 100%) !important; }
@@ -10661,10 +10672,10 @@ button.bg-lighter:focus {
   background: linear-gradient(87deg, black 0, black 100%) !important; }
 
 .bg-gradient-blue {
-  background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important; }
+  background: linear-gradient(87deg, #0e0872 0, black 100%) !important; }
 
 .bg-gradient-indigo {
-  background: linear-gradient(87deg, #5603ad 0, #9d03ad 100%) !important; }
+  background: linear-gradient(87deg, #5603ad 0, #043659 100%) !important; }
 
 .bg-gradient-purple {
   background: linear-gradient(87deg, #8965e0 0, #bc65e0 100%) !important; }

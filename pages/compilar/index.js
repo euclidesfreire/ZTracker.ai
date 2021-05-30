@@ -15,7 +15,7 @@ import {
     Col,
   } from "reactstrap";
 
-const upload = (props) => {
+const compilar = (props) => {
 
     return (
         <>
@@ -29,20 +29,23 @@ const upload = (props) => {
                       <Row className="align-items-center">
                         <div className="col">
                           <h6 className="text-uppercase text-muted ls-1 mb-1">
-                            Upload
+                            Compilar
                           </h6>
-                          <h2 className="mb-0">Vídeo de Entrada</h2>
+                          <h2 className="mb-0">Carregar Algoritmo</h2>
                         </div>
                       </Row>
                     </CardHeader>
                     <CardBody>
                       {/* form video */}
-                        <form action="api/drives/uploads/video" method="POST" encType="multipart/form-data">
-                            <select name="folder" class="select-folder">
-                                <option value="1kQ0iL9QlV0GVEhNieX6aadxd8TNByoky">Colab Files</option>
+                        <form action="api/pages/compilar" method="POST" encType="multipart/form-data">
+                            <label>Vídeo de Saída</label> <br />
+                            <select name="video-name" class="">
+                                <option value="output.mp4">output.mp4</option>
                             </select>
-                            <input type="file" name="video" />
-                            <input type="submit" value="Enviar" />
+                            <br /> <br />
+                            <input type="text" name="size-fish" placeholder="Digite o Max Finsh" class=""/>
+                            <br /> <br /><br />
+                            <input type="submit" value="Compilar" />
                         </form>
                     </CardBody>
                   </Card>
@@ -54,6 +57,6 @@ const upload = (props) => {
 
 }
 
-upload.layout = Admin;
+compilar.layout = Admin;
 
-export default upload;
+export default compilar;

@@ -5,7 +5,9 @@ function add(request, response){
 
         var cookies = new Cookies(request, response);
 
-        cookies.set('LINK_SERVER', request.body.linkapi);
+        const linkapi = String(request.body.linkapi);
+
+        cookies.set('LINK_SERVER', linkapi);
 
         return response.redirect('/');
 

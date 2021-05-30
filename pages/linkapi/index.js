@@ -38,8 +38,9 @@ const linkApi = (props) => {
                     <CardBody>
                       {/* form link */}
                       <form action="api/datas/links/add" method="POST">
-                          <input type="text" name="linkapi" />
-                          <input type="submit" value="Inserir" />
+                          <input type="text" name="linkapi" placeholder="Digite URL Server"/> 
+                          <br /> <br />
+                          <input type="submit" value="Inserir"/>
                       </form>
                     </CardBody>
                   </Card>
