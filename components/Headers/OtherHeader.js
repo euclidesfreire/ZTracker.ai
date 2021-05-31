@@ -11,13 +11,13 @@ function OtherHeader() {
         style={{
           minHeight: "250px",
           backgroundImage:
-            "url(" + require("assets/img/theme/img-1-1000x600.jpg") + ")",
+            "url(" + require("assets/img/theme/fish.jpeg") + ")",
           backgroundSize: "cover",
           backgroundPosition: "center top",
         }}
       >
         {/* Mask */}
-        <span className="mask bg-gradient-default opacity-5" />
+        {/*<span className="mask bg-gradient-default opacity-6" />*/}
         {/* Header container */}
       </div>
     </>

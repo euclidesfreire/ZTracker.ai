@@ -8,14 +8,14 @@ var routes = [
   {
     layout: 'Admin',
     path: "/compilar",
-    name: "Compilar",
+    name: "Carregar Vídeo",
     icon: "ni ni-cloud-upload-96 text-primary",
   },
   {
     layout: 'Admin',
-    path: "/linkapi",
-    name: "Link Server API",
-    icon: "ni ni-curved-next text-primary",
+    path: "/configuration",
+    name: "Configurações",
+    icon: "ni ni-settings-gear-65 text-primary",
   },
 ];
 export default routes;

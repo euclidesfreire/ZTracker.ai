@@ -9,10 +9,11 @@ function add(request, response){
 
         cookies.set('LINK_SERVER', linkapi);
 
-        return response.redirect('/');
+        return response.redirect('/compilar');
 
     } catch (err) {
-        return console.log('Erro Add Link API Server: ' + err);
+        console.log('Erro Add Link API Server: ' + err);
+        return response.json({err: err});
     }
 }
 

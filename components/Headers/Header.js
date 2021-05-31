@@ -6,7 +6,15 @@ import { Card, CardBody, CardTitle, Container, Row, Col } from "reactstrap";
 function Header() {
   return (
     <>
-      <div className="header bg-gradient-default pb-8 pt-5 pt-md-8" >
+      <div className="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" 
+      style={{
+        minHeight: "250px",
+        backgroundImage:
+          "url(" + require("assets/img/theme/fish.jpeg") + ")",
+        backgroundSize: "cover",
+        backgroundPosition: "center top",
+      }}
+      >
         <Container fluid>
           <div className="header-body">
             {/* Card stats */}
@@ -23,7 +31,7 @@ function Header() {
                           Velocidade
                         </CardTitle>
                         <span className="h2 font-weight-bold mb-0">
-                          350,897
+                          7,1795
                         </span>
                       </div>
                       <Col className="col-auto">
@@ -36,7 +44,7 @@ function Header() {
                       <span className="text-success mr-2">
                         <i className="fa fa-arrow-up" /> 3.48%
                       </span>{" "}
-                      <span className="text-nowrap">Since last month</span>
+                      <span className="text-nowrap">Variação</span>
                     </p>
                   </CardBody>
                 </Card>
@@ -52,7 +60,7 @@ function Header() {
                         >
                           Distância
                         </CardTitle>
-                        <span className="h2 font-weight-bold mb-0">2,356</span>
+                        <span className="h2 font-weight-bold mb-0">9,8974</span>
                       </div>
                       <Col className="col-auto">
                         <div className="icon icon-shape bg-warning text-white rounded-circle shadow">
@@ -64,7 +72,7 @@ function Header() {
                       <span className="text-danger mr-2">
                         <i className="fas fa-arrow-down" /> 3.48%
                       </span>{" "}
-                      <span className="text-nowrap">Since last week</span>
+                      <span className="text-nowrap">Variação</span>
                     </p>
                   </CardBody>
                 </Card>
@@ -80,7 +88,7 @@ function Header() {
                         >
                           Polarização
                         </CardTitle>
-                        <span className="h2 font-weight-bold mb-0">924</span>
+                        <span className="h2 font-weight-bold mb-0">0,2965</span>
                       </div>
                       <Col className="col-auto">
                         <div className="icon icon-shape bg-yellow text-white rounded-circle shadow">
@@ -92,7 +100,7 @@ function Header() {
                       <span className="text-warning mr-2">
                         <i className="fas fa-arrow-down" /> 1.10%
                       </span>{" "}
-                      <span className="text-nowrap">Since yesterday</span>
+                      <span className="text-nowrap">Variação</span>
                     </p>
                   </CardBody>
                 </Card>

@@ -5,12 +5,12 @@ function checkCookies(request, response){
         const cookie = new Cookies(request, response);
         
         //const AuthBool = cookie.get('TOKEN_GDRIVE') ? true : false;
-        const LinkServerBool = cookie.get('LINK_SERVER') ? true : false;
+        const compilarServerBool = cookie.get('COMPILAR_VERIFY') ? true : false;
 
         const checkCookieJson = {
-            "LINK_SERVER": { 
-                "cookieBool": LinkServerBool,
-                "url": "/linkapi"
+            "COMPILAR_VERIFY": { 
+                "cookieBool": compilarServerBool,
+                "url": "/compilar"
             }    
         };
         

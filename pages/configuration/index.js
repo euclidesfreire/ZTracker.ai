@@ -15,7 +15,7 @@ import {
     Col,
   } from "reactstrap";
 
-const linkApi = (props) => {
+const configuration = (props) => {
 
     return (
         <>
@@ -52,6 +52,6 @@ const linkApi = (props) => {
 
 }
 
-linkApi.layout = Admin;
+configuration.layout = Admin;
 
-export default linkApi;
+export default configuration;

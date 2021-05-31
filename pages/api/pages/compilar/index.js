@@ -10,7 +10,7 @@ function checkCookies(request, response){
         const checkCookieJson = {
             "LINK_SERVER": { 
                 "cookieBool": LinkServerBool,
-                "url": "/linkapi"
+                "url": "/configuration"
             }    
         };
         

@@ -26,8 +26,10 @@ import Admin from "layouts/Admin.js";
 import {
   chartOptions,
   parseOptions,
-  chartExample1,
-  chartExample2,
+  chartVelocidade,
+  chartDistancia,
+  chartPolarizacao,
+  chartTablePeixes,
 } from "variables/charts.js";
 
 import Header from "components/Headers/Header.js";
@@ -41,9 +43,9 @@ import Switch from '@material-ui/core/Switch';
 
 export async function getServerSideProps(ctx){
 
-  try {
+ /* try {
     //JSON DATA => API pages dashboard
-    const proxyUrl = 'https://ztracker-ai.vercel.app/api/pages/dashboard';
+    const proxyUrl = 'http://localhost:3000/api/pages/dashboard';
 
     const options = {
       headers: {
@@ -54,14 +56,14 @@ export async function getServerSideProps(ctx){
     const data = await fetch(proxyUrl, options);
     const dataJson = await data.json(); 
   
-    if(!dataJson['checkCookie']['LINK_SERVER']['cookieBool']){
+    if(!dataJson['checkCookie']['COMPILAR_VERIFY']['cookieBool']){
       return {
         redirect: {
-          destination: dataJson['checkCookie']['LINK_SERVER']['url'],
+          destination: dataJson['checkCookie']['COMPILAR_VERIFY']['url'],
           permanent: false,
         },
       };
-    }
+    }*/
 
     const fileId = '1-CX04UX8UQuExfxX7WZ7YJQcLsJLbQi-';
 
@@ -72,11 +74,11 @@ export async function getServerSideProps(ctx){
         urlOutput: urlOutput
       }
   }
-  } catch (err) {
+  /*} catch (err) {
     console.log('The Page Dashboad Err: ' + err + " DOMINIO: " + process.env.DOMINIO);
 
     return { props: {} };
-  }
+  }*/
 }
 
 const useStyles = makeStyles({
@@ -133,65 +135,10 @@ const Dashboard = (props) => {
               </CardHeader>
               <CardBody>
                 {/* video */}
-                <div>
-                   <iframe width="100%" height="350px" src={props.urlOutput}>
+                <figure><div class="boxVideo">
+                   <iframe width="100%" height="380px" src={props.urlOutput}>
                    </iframe>
-                </div>
-              </CardBody>
-            </Card>
-          </Col>
-        </Row>
-        <Row className="mt-5">
-          <Col className="mb-5 mb-xl-0" xl="8">
-            <Card className="shadow">
-              <CardHeader className="border-0">
-                <Row className="align-items-center">
-                  <div className="col">
-                    <h6 className="text-uppercase text-light ls-1 mb-1">
-                      Overview
-                    </h6>
-                    <h2 className="text-white mb-0">Sales value</h2>
-                  </div>
-                  <div className="col">
-                    <Nav className="justify-content-end" pills>
-                      <NavItem>
-                        <NavLink
-                          className={classnames("py-2 px-3", {
-                            active: activeNav === 1,
-                          })}
-                          href="#pablo"
-                          onClick={(e) => toggleNavs(e, 1)}
-                        >
-                          <span className="d-none d-md-block">Month</span>
-                          <span className="d-md-none">M</span>
-                        </NavLink>
-                      </NavItem>
-                      <NavItem>
-                        <NavLink
-                          className={classnames("py-2 px-3", {
-                            active: activeNav === 2,
-                          })}
-                          data-toggle="tab"
-                          href="#pablo"
-                          onClick={(e) => toggleNavs(e, 2)}
-                        >
-                          <span className="d-none d-md-block">Week</span>
-                          <span className="d-md-none">W</span>
-                        </NavLink>
-                      </NavItem>
-                    </Nav>
-                  </div>
-                </Row>
-              </CardHeader>
-              <CardBody>
-                {/* Chart */}
-                <div className="chart">
-                  <Line
-                    data={chartExample1[chartExample1Data]}
-                    options={chartExample1.options}
-                    getDatasetAtEvent={(e) => console.log(e)}
-                  />
-                </div>
+                </div></figure>
               </CardBody>
             </Card>
           </Col>
@@ -201,9 +148,32 @@ const Dashboard = (props) => {
                 <Row className="align-items-center">
                   <div className="col">
                     <h6 className="text-uppercase text-muted ls-1 mb-1">
-                      Performance
+                      Dados
                     </h6>
-                    <h2 className="mb-0">Total orders</h2>
+                    <h2 className="mb-0">Outros Resultados</h2>
+                  </div>
+                </Row>
+              </CardHeader>
+              <CardBody>
+                {/* filter */}
+                <div>
+                  <button class="btn-resultados"> <div><i class="fas fa-table"></i></div> Tabelas </button> <br/><br/>
+                  <button class="btn-resultados"> <div><i class="fas fa-fish"></i></div> Dados por Peixe</button>
+                </div>
+              </CardBody>
+            </Card>
+          </Col>
+        </Row>
+        <Row className="mt-5">
+          <Col xl="4">
+            <Card className="shadow">
+              <CardHeader className="bg-transparent">
+                <Row className="align-items-center">
+                  <div className="col">
+                    <h6 className="text-uppercase text-muted ls-1 mb-1">
+                      Gráfico
+                    </h6>
+                    <h2 className="mb-0">Velocidade por Peixe</h2>
                   </div>
                 </Row>
               </CardHeader>
@@ -211,8 +181,79 @@ const Dashboard = (props) => {
                 {/* Chart */}
                 <div className="chart">
                   <Bar
-                    data={chartExample2.data}
-                    options={chartExample2.options}
+                    data={chartTablePeixes.data}
+                    options={chartTablePeixes.options}
+                  />
+                </div>
+              </CardBody>
+            </Card>
+          </Col>
+          <Col className="mb-5 mb-xl-0" xl="8">
+            <Card className="shadow">
+              <CardHeader className="border-0">
+                <Row className="align-items-center">
+                  <div className="col">
+                    <h6 className="text-uppercase text-light ls-1 mb-1">
+                      Gráfico
+                    </h6>
+                    <h2 className="mb-0">Velocidade</h2>
+                  </div>
+                </Row>
+              </CardHeader>
+              <CardBody>
+                {/* Chart */}
+                <div className="chart">
+                  <Line
+                    data={chartVelocidade.data}
+                    options={chartVelocidade.options}
+                  />
+                </div>
+              </CardBody>
+            </Card>
+          </Col>
+        </Row>
+        <Row className="mt-5">
+          <Col className="mb-5 mb-xl-0" xl="6">
+            <Card className="shadow">
+              <CardHeader className="border-0">
+                <Row className="align-items-center">
+                  <div className="col">
+                    <h6 className="text-uppercase text-light ls-1 mb-1">
+                      Gráfico
+                    </h6>
+                    <h2 className="mb-0">Distância</h2>
+                  </div>
+                </Row>
+              </CardHeader>
+              <CardBody>
+                {/* Chart */}
+                <div className="chart">
+                  <Line
+                    data={chartDistancia.data}
+                    options={chartDistancia.options}
+                  />
+                </div>
+              </CardBody>
+            </Card>
+          </Col>
+          <Col className="mb-5 mb-xl-0" xl="6">
+            <Card className="shadow">
+              <CardHeader className="border-0">
+                <Row className="align-items-center">
+                  <div className="col">
+                    <h6 className="text-uppercase text-light ls-1 mb-1">
+                      Gráfico
+                    </h6>
+                    <h2 className="mb-0">Polarização</h2>
+                  </div>
+                </Row>
+              </CardHeader>
+              <CardBody>
+                {/* Chart */}
+                <div className="chart">
+                  <Line
+                    data={chartPolarizacao.data}
+                    options={chartPolarizacao.options}
                   />
                 </div>
               </CardBody>

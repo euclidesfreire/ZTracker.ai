@@ -12,7 +12,8 @@ function get(request, response){
         });
 
     } catch (err) {
-        return console.log('Erro Get Link API Server: ' + err);
+        console.log('Erro Get Link API Server: ' + err);
+        return response.json({err: err});
     }
 }
 
